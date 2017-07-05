@@ -1,6 +1,7 @@
 package main
 
 import (
+  "math"
 )
 
 // Store a geolocation
@@ -14,6 +15,15 @@ func handleErrors(err error) {
   if err != nil {
     panic(err)
   }
+}
+
+// Converts degrees into radians
+func degreesToRadians(degrees float64) float64 {
+  for degrees >= 360.0 {
+    degrees -= 360
+  }
+
+  return degrees * (math.Pi / 180)
 }
 
 // Haversine distance computation
