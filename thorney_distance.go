@@ -2,6 +2,9 @@ package main
 
 import (
   "math"
+  "fmt"
+  "database/sql"
+  _ "github.com/mattn/go-sqlite3"
 )
 
 // Store a geolocation
@@ -40,7 +43,16 @@ func haversineDistance(loc0 Location, loc1 Location) float64 {
 
 // Fetches location data from a string postcode
 func getLocationFromPostcode(postcode string) Location {
-  return Location{0, 0}
+  db, err := sql.Open("sqlite3", "./postcode.sl3")
+  handleErrors(err)
+  defer db.Close()
+
+  var location Location
+  rows, err := db.Query(fmt.Sprintf("select lat, long from postcode where code='%s' limit 1", postcode))
+  rows.Next()
+  handleErrors(rows.Scan(&location.lat, &location.long))
+
+  return location
 }
 
 func main() {
