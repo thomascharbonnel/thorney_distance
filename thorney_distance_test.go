@@ -47,3 +47,12 @@ func TestGetLocationFromPostcode(t *testing.T) {
     t.Fatalf("Expected %f but got %f.", 52.88418, result)
   }
 }
+
+func TestDistanceBetweenPostcodes(t *testing.T) {
+  result := distanceBetweenPostcodes("AB10", "ZE3")
+  expected_distance := 309.3
+
+  if result > expected_distance * 1.01 || result < expected_distance * 0.99 {
+    t.Fatalf("Expected %f but got %f.", expected_distance, result)
+  }
+}
