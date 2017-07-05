@@ -44,6 +44,6 @@ func TestGetLocationFromPostcode(t *testing.T) {
   result := getLocationFromPostcode("LL53")
 
   if result.lat != 52.88418 {
-    t.Fatalf("Expected %f but got %f.", result, 52.88418)
+    t.Fatalf("Expected %f but got %f.", 52.88418, result)
   }
 }
