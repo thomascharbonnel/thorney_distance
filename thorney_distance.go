@@ -1,7 +1,9 @@
 package main
 
 import (
+  "os"
   "math"
+  "errors"
   "fmt"
   "database/sql"
   _ "github.com/mattn/go-sqlite3"
@@ -64,5 +66,14 @@ func distanceBetweenPostcodes(postcode0, postcode1 string) float64 {
 }
 
 func main() {
+  if len(os.Args) != 3 {
+    handleErrors(errors.New("Program takes two arguments, the two postcodes."))
+  }
 
+  postcode0 := os.Args[1]
+  postcode1 := os.Args[2]
+
+  distance := distanceBetweenPostcodes(postcode0, postcode1)
+
+  fmt.Printf("The distance between postcodes %s and %s is %f km.", postcode0, postcode1, distance)
 }
