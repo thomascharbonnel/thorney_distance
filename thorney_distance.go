@@ -55,6 +55,14 @@ func getLocationFromPostcode(postcode string) Location {
   return location
 }
 
+// Returns the distance between two postcodes
+func distanceBetweenPostcodes(postcode0, postcode1 string) float64 {
+  loc0 := getLocationFromPostcode(postcode0)
+  loc1 := getLocationFromPostcode(postcode1)
+
+  return haversineDistance(loc0, loc1)
+}
+
 func main() {
 
 }
