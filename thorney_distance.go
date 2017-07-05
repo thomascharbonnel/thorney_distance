@@ -29,7 +29,13 @@ func degreesToRadians(degrees float64) float64 {
 // Haversine distance computation
 // Takes two locations and returns the distance between the two
 func haversineDistance(loc0 Location, loc1 Location) float64 {
-  return 42.0
+  lat0 := degreesToRadians(loc0.lat)
+  lat1 := degreesToRadians(loc1.lat)
+  delta_lat := degreesToRadians(loc1.lat - loc0.lat)
+  delta_long := degreesToRadians(loc1.long - loc0.long)
+  r := 6365.079 // Earth radius under London
+
+  return 2.0 * r * math.Asin(math.Sqrt(math.Pow(delta_lat / 2.0, 2.0) + math.Cos(lat1) * math.Cos(lat0) * math.Pow(delta_long / 2.0, 2.0)))
 }
 
 // Fetches location data from a string postcode
