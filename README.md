@@ -1,8 +1,17 @@
 # Thorney Distance
 
 This is a CLI program computing the distance between two given UK postcodes.
+It's coded as part of a challenge for Surematics.
 The actual data is provided by a sqlite database and comes from [Gibbs's github repository](https://github.com/Gibbs/uk-postcodes).
 The distance is computed using the [Haversine formula](https://en.wikipedia.org/wiki/Haversine_formula).
+
+## How to
+
+Just run the program with the two postcodes you want to compute the distance between.
+
+```
+go run thorny_distance.go SW1 LL53
+```
 
 ## Why The Name?
 
