@@ -74,6 +74,7 @@ func main() {
   postcode1 := os.Args[2]
 
   distance := distanceBetweenPostcodes(postcode0, postcode1)
+  distance_in_miles := distance / 1.609344
 
-  fmt.Printf("The distance between postcodes %s and %s is %f km.", postcode0, postcode1, distance)
+  fmt.Printf("The distance between postcodes %s and %s is %f km (%f mi).", postcode0, postcode1, distance, distance_in_miles)
 }
