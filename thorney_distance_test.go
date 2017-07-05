@@ -39,3 +39,11 @@ func TestHaversineDistance(t *testing.T) {
     t.Fatalf("Expected %d but got %d.", 343, result)
   }
 }
+
+func TestGetLocationFromPostcode(t *testing.T) {
+  result := getLocationFromPostcode("LL53")
+
+  if result.lat != 52.88418 {
+    t.Fatalf("Expected %f but got %f.", result, 52.88418)
+  }
+}
